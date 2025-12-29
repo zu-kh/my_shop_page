@@ -3907,3 +3907,52 @@ input, select, textarea {
 			}
 
 		}
+
+/* Language Switcher */
+body.arabic-text {
+	direction: rtl;
+	text-align: right;
+}
+
+body.arabic-text p, body.arabic-text div, body.arabic-text li, body.arabic-text a, body.arabic-text span, body.arabic-text label {
+	font-family: 'Arial', sans-serif; /* You might want to use a specific Arabic font here */
+}
+
+#sidebar .lang-button {
+    margin-top: 1em;
+    font-size: 0.6em; /* Adjust as needed */
+    letter-spacing: 0.15em;
+    padding: 0.5em 1em;
+    line-height: 2em; /* Adjust to align text vertically */
+}
+
+#sidebar .lang-button.active {
+    background-color: #ffffff;
+    color: #312450 !important;
+}
+
+/* Adjust sidebar navigation for language buttons */
+#sidebar nav ul.actions.vertical {
+    margin-top: 1.5em; /* Space between nav links and language buttons */
+    border-top: solid 1px rgba(255, 255, 255, 0.15); /* Separator line */
+    padding-top: 1.5em;
+}
+
+/* Adjustments for RTL in sidebar */
+body.arabic-text #sidebar {
+    text-align: left;
+}
+
+body.arabic-text #sidebar nav ul li {
+    padding-right: 0; /* Remove default padding-left */
+}
+
+body.arabic-text #sidebar nav a {
+    text-align: right; /* Align text to the right for RTL */
+}
+
+body.arabic-text #sidebar nav a:before,
+body.arabic-text #sidebar nav a:after {
+    right: auto; /* Reset right property */
+    left: 0; /* Align to the left for RTL */
+}
