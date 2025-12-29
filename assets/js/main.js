@@ -10,6 +10,9 @@
 		$body = $('body'),
 		$sidebar = $('#sidebar');
 
+	// Add class to body to hide main content initially
+	$body.addClass('language-preselect');
+
 	// Translations object
 	var translations = {
 		de: {
@@ -122,7 +125,6 @@
 		});
 
 		// Special handling for form labels (if needed, otherwise will be handled by data-key)
-		// For form inputs, we'll use placeholders that are set via data-key attributes on the labels
 		$('label[for="name"]').text(translations[lang]['form_name']);
 		$('label[for="email"]').text(translations[lang]['form_email']);
 		$('label[for="message"]').text(translations[lang]['form_message']);
@@ -140,17 +142,34 @@
 
 		// Store preferred language in local storage
 		localStorage.setItem('preferredLang', lang);
+
+		// Hide the modal and show main content
+		$('#language-modal').hide();
+		$body.removeClass('language-preselect');
 	}
 
-	// Set initial language based on local storage or default to German
-	var initialLang = localStorage.getItem('preferredLang') || 'de';
-	$(document).ready(function() {
-		setLanguage(initialLang);
-	});
+	// Check for preferred language on page load
+	var initialLang = localStorage.getItem('preferredLang');
+	if (initialLang) {
+		$(document).ready(function() {
+			setLanguage(initialLang);
+		});
+	} else {
+		// If no language is set, show the modal
+		$(document).ready(function() {
+			$('#language-modal').show();
+		});
+	}
 	
-
-	// Language switcher event listeners
+	// Language switcher event listeners for sidebar buttons
 	$(document).on('click', '.lang-button', function(e) {
+		e.preventDefault();
+		var lang = $(this).data('lang');
+		setLanguage(lang);
+	});
+
+	// Language switcher event listeners for modal buttons
+	$(document).on('click', '.language-select-button', function(e) {
 		e.preventDefault();
 		var lang = $(this).data('lang');
 		setLanguage(lang);

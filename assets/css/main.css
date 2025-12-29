@@ -3956,3 +3956,44 @@ body.arabic-text #sidebar nav a:after {
     right: auto; /* Reset right property */
     left: 0; /* Align to the left for RTL */
 }
+
+/* Language Modal Styling */
+#language-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(49, 36, 80, 0.95); /* Dark background with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10001; /* Ensure it's above everything else */
+}
+
+.language-modal-content {
+    background-color: #3c2c62; /* Slightly lighter background for the content box */
+    padding: 3em;
+    border-radius: 0.5em;
+    text-align: center;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    width: 30em;
+}
+
+.language-modal-content h2 {
+    color: #ffffff;
+    margin-bottom: 1.5em;
+    font-size: 1.75em;
+}
+
+.language-select-button {
+    margin-bottom: 1em;
+}
+
+/* Initially hide main content */
+body.language-preselect #wrapper,
+body.language-preselect #sidebar,
+body.language-preselect #footer {
+    display: none;
+}
